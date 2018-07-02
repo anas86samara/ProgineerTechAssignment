@@ -121,11 +121,13 @@ public class MainVerticle extends AbstractVerticle {
 	 * @throws IOException
 	 */
 	private String getMetrics() throws IOException {
+		int totalNO = 0;
 		Map<String,Integer> countriesMap = new HashMap<String,Integer>();
 		FileReader fileReader = new FileReader(REQUESTS_FILE);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String sCurrentLine;
 		while ((sCurrentLine = bufferedReader.readLine()) != null) {
+			++totalNO;
 			Integer requestsNumber = countriesMap.get(sCurrentLine);
 			if(requestsNumber == null) {
 				countriesMap.put(sCurrentLine, 1);
@@ -133,7 +135,7 @@ public class MainVerticle extends AbstractVerticle {
 				countriesMap.put(sCurrentLine, ++requestsNumber);
 			}
 		}
-		return countriesMap.toString();
+		return countriesMap.toString() + "\n TOTAL NUMBER OF REQUESTS: " + totalNO;
 	}
 
 	/**
@@ -159,5 +161,4 @@ public class MainVerticle extends AbstractVerticle {
 		}
 		return finalString.toString();
 	}
-
 }
