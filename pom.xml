@@ -40,7 +40,7 @@
                               <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                   <manifestEntries>
                                       <Main-Class>io.vertx.core.Launcher</Main-Class>
-                                      <Main-Verticle>com.assignment.anas.anasTask.MainVerticle</Main-Verticle>
+                                      <Main-Verticle>com.assignment.anas.MyServicesVerticle</Main-Verticle>
                                   </manifestEntries>
                               </transformer>
                               <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
@@ -64,7 +64,7 @@
                     <mainClass>io.vertx.core.Launcher</mainClass>
                     <arguments>
                         <argument>run</argument>
-                        <argument>com.assignment.anas.anasTask.MainVerticle</argument>
+                        <argument>com.assignment.anas.MyServicesVerticle</argument>
                     </arguments>
                 </configuration>
             </plugin>
