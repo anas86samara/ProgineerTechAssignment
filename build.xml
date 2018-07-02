@@ -37,6 +37,10 @@
         <pathelement location="target/test-classes"/>
         <path refid="Maven Dependencies.libraryclasspath"/>
     </path>
+    <path id="run.anas_task_config.classpath">
+        <path refid="anasTask.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
     <path id="run.Launcher.classpath">
         <path refid="anasTask.classpath"/>
         <path refid="Maven Dependencies.libraryclasspath"/>
@@ -49,7 +53,7 @@
         <path refid="anasTask.classpath"/>
         <path refid="Maven Dependencies.libraryclasspath"/>
     </path>
-    <path id="run.anas_task_config.classpath">
+    <path id="run.Main.classpath">
         <path refid="anasTask.classpath"/>
         <path refid="Maven Dependencies.libraryclasspath"/>
     </path>
@@ -99,6 +103,12 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="anas_task_config">
+        <java classname="io.vertx.core.Starter" failonerror="true" fork="yes">
+            <arg line="run com.assignment.anas.MainVerticle"/>
+            <classpath refid="run.anas_task_config.classpath"/>
+        </java>
+    </target>
     <target name="Launcher">
         <java classname="io.vertx.core.Launcher" failonerror="true" fork="yes">
             <classpath refid="run.Launcher.classpath"/>
@@ -114,10 +124,9 @@
             <classpath refid="run.Version.classpath"/>
         </java>
     </target>
-    <target name="anas_task_config">
-        <java classname="io.vertx.core.Starter" failonerror="true" fork="yes">
-            <arg line="run com.assignment.anas.MainVerticle"/>
-            <classpath refid="run.anas_task_config.classpath"/>
+    <target name="Main">
+        <java classname="com.assignment.anas.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main.classpath"/>
         </java>
     </target>
 </project>
